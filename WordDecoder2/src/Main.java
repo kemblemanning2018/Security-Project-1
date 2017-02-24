@@ -10,6 +10,7 @@ public class Main {
 	static String[] commonWords = new String[100];
 	static char[] tester;
 	static String[] bestMatch;
+	static boolean commonWords;
 
 	
 	//Fills Arrays with each letter of the alphabet and zeros
@@ -30,6 +31,14 @@ public class Main {
 		Scanner s = new Scanner(System.in);
 		String input = s.nextLine().toLowerCase();
 		System.out.println(input);
+		
+		System.out.println("Use common words? (y/n)")
+		char input2 = s.nextLine()
+		if(input2 = 'y' || input2 = 'Y')
+			commonWords = true;
+		else
+			commonWords = false;
+		
 		char[] charArray = input.toCharArray();
 		for(int i = 0; i < charArray.length; i++){
 			for(int j = 0; j < alphabet.length; j++){
@@ -44,7 +53,7 @@ public class Main {
 			}
 		}
 		s.close();
-		
+		if(commonWords){
 		try {
 			File file =  new File("commonWords.txt");
 			Scanner sc = new Scanner(file);
@@ -58,7 +67,23 @@ public class Main {
 		catch (FileNotFoundException e) {
 			System.out.println("Common Words File Error");
 		}
-		
+		}
+		else
+		{
+			try {
+			File file =  new File("englishwords.txt");
+			Scanner sc = new Scanner(file);
+			int index = 0;
+			while(sc.hasNext()){
+				commonWords[index] = sc.nextLine();
+				index++;
+			}
+			sc.close();
+		} 
+		catch (FileNotFoundException e) {
+			System.out.println("English Words File Error");
+		}	
+		}
 		tester = charArray;
 		int bestGuess = 0;
 		for(int i = 26; i >0; i--){
