@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import javax.swing;
+import java.awt;
 import java.io.FileNotFoundException;
 import java.io.File;
 
@@ -11,6 +13,10 @@ public class Main {
 	static char[] tester;
 	static String[] bestMatch;
 	static boolean commonWords;
+	private final static String newline = "\n";
+	public static JTextField textField;
+	public static JButton button;
+	public static boolean englishWords;
 
 	
 	//Fills Arrays with each letter of the alphabet and zeros
@@ -123,6 +129,47 @@ public class Main {
 			System.out.println("The message could not be determined by the current dictionary.");
 		}
 
+	}
+	
+	public void userInterface(){
+		//create frame and set close operation
+		frame Jframe = new JFrame("Polyalphabetic Cipher");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		//create text input line
+		textField = new JTextField(20);
+		textField.addActionListener(this);
+		
+		//create button to determine which dictionary to use
+		button = new JButton("Use English Words");
+		button.addActionListener(this);
+		
+		
+		//add the components and make the frame visible
+		frame.add(textField);
+		frame.add(button);
+		frame.isVisible(true);
+
+	}
+	
+	
+	
+	public void actionPerformed(ActionEvent evt) {
+		Object source = e.getSource();
+		if(source = button)
+			englishWords = !englishWords;
+		if(source = textField)
+		{
+		
+	    //grab user entered text
+		String text = textField.getText();
+		
+		//if(englishWords)
+			// decipher(text, true);
+		//decipher(text, false);
+		
+		}
+	    
 	}
 
 }
