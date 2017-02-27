@@ -31,6 +31,18 @@ public class Main {
 	
 	
 	public static void main(String[] args) {
+		englishWords = false;
+		//create infinite loop to run program
+		javax.swing.SwingUtilities.invokeLater(new Runnable(){
+            public void run() {
+                userInterface(); 
+            }
+        });
+    }
+
+	}
+	
+	public static void decipher(){
 		fillArrays();
 		
 		System.out.println("Please input a sentence");
